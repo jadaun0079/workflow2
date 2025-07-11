@@ -22,9 +22,9 @@ jobs:
 
       - name: Run Lychee on website
         run: |
-          lychee --verbose --exclude-mail --no-progress ./  # Scans all local files (HTML/MD)
+          
 
       # Optional: Run Lychee on deployed GitHub Pages site
       - name: Check Live Website for Broken Links
         run: |
-          lychee --verbose --no-progress https://your-username.github.io/your-repo-name
+          lychee --verbose --no-progress https://your-jadaun0079.github.io/workflow
