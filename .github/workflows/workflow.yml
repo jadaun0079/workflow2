@@ -1,0 +1,31 @@
+name: Check for Broken Links
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch if different
+  schedule:
+    - cron: '0 3 * * *'  # Runs daily at 3:00 AM UTC
+
+jobs:
+  lychee-link-check:
+    runs-on: ubuntu-latest
+    name: Lychee Link Checker
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Lychee
+        run: |
+          curl -Ls https://github.com/lycheeverse/lychee/releases/latest/download/lychee-linux.tar.gz | tar xz
+          sudo mv lychee /usr/local/bin/
+
+      - name: Run Lychee on website
+        run: |
+          lychee --verbose --exclude-mail --no-progress ./  # Scans all local files (HTML/MD)
+
+      # Optional: Run Lychee on deployed GitHub Pages site
+      - name: Check Live Website for Broken Links
+        run: |
+          lychee --verbose --no-progress https://your-username.github.io/your-repo-name
