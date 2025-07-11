@@ -18,8 +18,7 @@ jobs:
 
       - name: Install Lychee
         run: |
-          curl -Ls https://github.com/lycheeverse/lychee/releases/latest/download/lychee-linux.tar.gz | tar xz
-          sudo mv lychee /usr/local/bin/
+          
 
       - name: Run Lychee on website
         run: |
